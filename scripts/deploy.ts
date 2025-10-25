@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { EOL } from 'os';
-import { initialize, getGasPrice, getBalance, getContractAt, deployContract } from './library';
+import { deployContract, getContractAt, initialize } from './library';
 
 function _throw(message: string): never { throw new Error(message); }
 
@@ -8,7 +8,7 @@ const NETWORK_CONFIG: { [chainId: number]: [string, string, string] } = {
   // mainnets
   1: ['0xc718E5a5b06ce7FEd722B128C0C0Eb9c5c902D92', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F'], // ethereum
   43114: ['0x4748d173d1A8becFB9afC0aB2262EcDDf6822294', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506'], // avalanche
-  8453: ['0xc00d62Ce5C1543D939EEbb9d6dB213EF873300E3', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0x6BDED42c6DA8FBf0d2bA55B2fa120C5e0c8D7891'], // base
+  8453: ['0xc00d62Ce5C1543D939EEbb9d6dB213EF873300E3', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24'], // base - Uniswap V2 Router
   56: ['0x4e9cA8ca6A113FC3Db72677aa04C8DE028618377', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506'], // bnb smart chain
   250: ['0x8CBA65A8780e9887a51E77258b701db1e7aBAC05', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506'], // fantom
   59144: ['0xE1E35972f34F00196B52D5c4C0D80c2b7bC7Ad36', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0x8cFe327CEc66d1C090Dd72bd0FF11d690C33a2Eb'], // linea

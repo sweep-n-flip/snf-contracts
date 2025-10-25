@@ -187,7 +187,7 @@ contract UniswapV2ERC20 is IUniswapV2ERC20 {
 pragma solidity 0.8.9;
 
 //address constant DELEGATE_FACTORY = 0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac; // SushiSwap (Ethereum mainnet)
-//address constant DELEGATE_FACTORY = 0x71524B4f93c58fcbF659783284E38825f0622859; // SushiSwap (Base mainnet)
+address constant DELEGATE_FACTORY = 0x71524B4f93c58fcbF659783284E38825f0622859; // SushiSwap (Base mainnet)
 //address constant DELEGATE_FACTORY = 0xc35DADB65012eC5796536bD9864eD8773aBc74C4; // SushiSwap (most but Ethereum/Base mainnet)
 //address constant DELEGATE_FACTORY = 0x02a84c1b3BBD7401a5f7fa98a384EBC70bB5749E; // PancakeSwap (Linea mainnet)
 //address constant DELEGATE_FACTORY = 0xd03D8D566183F0086d8D09A84E1e30b58Dd5619d; // PancakeSwap (zkSync mainnet)
@@ -199,9 +199,9 @@ pragma solidity 0.8.9;
 //address constant DELEGATE_FACTORY = 0xE578184bC88EB48485Bba23a37B5509578d2aE38; // IceSwap (StratoVM testnet)
 //address constant DELEGATE_FACTORY = 0x9945f4a1eC4C4FC74a70276CCf60b8b1B2DE1F4A; // - (Bitfinity testnet)
 //address constant DELEGATE_FACTORY = 0x7d8c6B58BA2d40FC6E34C25f9A488067Fe0D2dB4; // Camelot (Apechain)
-address constant DELEGATE_FACTORY = 0x724412C00059bf7d6ee7d4a1d0D5cd4de3ea1C48; // HyperSwap (Hyperliquid mainnet)
+//address constant DELEGATE_FACTORY = 0x724412C00059bf7d6ee7d4a1d0D5cd4de3ea1C48; // HyperSwap (Hyperliquid mainnet)
 
-//bytes constant DELEGATE_INIT_CODE_HASH = hex"e18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303"; // SushiSwap (all)
+bytes constant DELEGATE_INIT_CODE_HASH = hex"e18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303"; // SushiSwap (all)
 //bytes constant DELEGATE_INIT_CODE_HASH = hex"57224589c67f3f30a6b0d7a1b54cf3153ab84563bc609ef41dfb34f8b2974d2d"; // PancakeSwap (Linea mainnet)
 //bytes constant DELEGATE_INIT_CODE_HASH = hex"0100045707a42494392b3558029b9869f865ff9df8f375dc1bf20b0555093f43"; // PancakeSwap (zkSync mainnet)
 //bytes constant DELEGATE_INIT_CODE_HASH = hex"9895581041f0c2ea658b6c2e615187fa4eaa05e55ab576ce8164a1090d8e6575"; // Blasterswap (Blast mainnet)
@@ -212,9 +212,9 @@ address constant DELEGATE_FACTORY = 0x724412C00059bf7d6ee7d4a1d0D5cd4de3ea1C48; 
 //bytes constant DELEGATE_INIT_CODE_HASH = hex"0437378fc27e93c612c5c385779bf540ca2064b54705e48c313aa216da380100"; // IceSwap (StratoVM testnet)
 //bytes constant DELEGATE_INIT_CODE_HASH = hex"5ae65da6662188c2e508cb6bcb59f05483a527fc27e586ef49c48f3ef9443469"; // - (Bitfinity testnet)
 //bytes constant DELEGATE_INIT_CODE_HASH = ""; // Camelot (Apechain)
-bytes constant DELEGATE_INIT_CODE_HASH = hex"c83d9df19c8c8a0a1229bd3122cbb86fd8ff56f79cc6781c15999d39425466e9"; // HyperSwap (Hyperliquid mainnet)
+//bytes constant DELEGATE_INIT_CODE_HASH = hex"c83d9df19c8c8a0a1229bd3122cbb86fd8ff56f79cc6781c15999d39425466e9"; // HyperSwap (Hyperliquid mainnet)
 
-//uint256 constant DELEGATE_NET_FEE = 9970; // SushiSwap
+uint256 constant DELEGATE_NET_FEE = 9970; // SushiSwap
 //uint256 constant DELEGATE_NET_FEE = 9975; // PancakeSwap
 //uint256 constant DELEGATE_NET_FEE = 9970; // Blasterswap
 //uint256 constant DELEGATE_NET_FEE = 9998; // Velodrome
@@ -222,7 +222,7 @@ bytes constant DELEGATE_INIT_CODE_HASH = hex"c83d9df19c8c8a0a1229bd3122cbb86fd8f
 //uint256 constant DELEGATE_NET_FEE = 9975; // StellaSwap
 //uint256 constant DELEGATE_NET_FEE = 9970; // Kodiak
 //uint256 constant DELEGATE_NET_FEE = 9970; // IceSwap
-uint256 constant DELEGATE_NET_FEE = 9970; // HyperSwap (assumed 0.3% fee like Uniswap V2)
+//uint256 constant DELEGATE_NET_FEE = 9970; // HyperSwap (assumed 0.3% fee like Uniswap V2)
 
 bool constant DELEGATE_CREATE2_ZKSYNC = false;
 //bool constant DELEGATE_CREATE2_ZKSYNC = true;

@@ -63,8 +63,8 @@ Base:
 
 | Contract     | Network (ID)      | Address                                                                                                                       |
 | ------------ | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| ROUTER       | basemain (8453)   | [0x46ed13B4EdDa147fA7eF018FB178300FA24C4Efc](https://basescan.org/address/0x46ed13B4EdDa147fA7eF018FB178300FA24C4Efc)         |
-| FACTORY      | basemain (8453)   | [0xFc42221594c07F2EFCEDfb11f4763FCa03248B5A](https://basescan.org/address/0xFc42221594c07F2EFCEDfb11f4763FCa03248B5A)         |
+| ROUTER       | basemain (8453)   | [0x1312488a7BF5aAF2B2EeBE8393c9616A1418CF04](https://basescan.org/address/0x1312488a7BF5aAF2B2EeBE8393c9616A1418CF04)         |
+| FACTORY      | basemain (8453)   | [0x611103410C8021B51725ab38Cc79C8F0feD715c6](https://basescan.org/address/0x611103410C8021B51725ab38Cc79C8F0feD715c6)         |
 
 | Subgraph                        | Target | Network (ID)      | Endpoint                                                                                                                                 |
 | ------------------------------- | ------ | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |

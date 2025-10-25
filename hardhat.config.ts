@@ -1,6 +1,6 @@
 // Comment these imports for zkSync mainnet/testnet
+import "@nomicfoundation/hardhat-verify";
 import "@nomiclabs/hardhat-ethers";
-import "@nomiclabs/hardhat-etherscan";
 import "hardhat-contract-sizer";
 // Uncomment these imports for zkSync mainnet/testnet
 //import "@matterlabs/hardhat-zksync-deploy";
@@ -100,44 +100,13 @@ export default {
     hardhat: { chainId, forking: { url }, accounts: [{ privateKey, balance }] },
   },
   etherscan: {
-    apiKey: {
-      // mainnets
-      mainnet: etherscan['mainnet'], // ethereum
-      avalanche: etherscan['avaxmain'], // avalanche
-      basemain: etherscan['basemain'], // base (custom)
-      bsc: etherscan['bscmain'], // bnb smart chain
-      opera: etherscan['ftmmain'], // fantom
-      lineamain: etherscan['lineamain'], // linea (custom)
-      polygon: etherscan['maticmain'], // polygon
-      arbitrumOne: etherscan['arbmain'], // arbitrum one
-      blastmain: etherscan['blastmain'], // blast
-      optimisticEthereum: etherscan['optmain'], // optimism
-      moonbeam: etherscan['moonbeammain'], // moonbeam
-      modemain: randomApiKey,
-      hyperliquid: etherscan['hyperliquid'],
-      // testnets
-      ropsten: etherscan['mainnet'], // ropsten
-      rinkeby: etherscan['mainnet'], // rinkeby
-      kovan: etherscan['mainnet'], // kovan
-      goerli: etherscan['mainnet'], // goerli
-      avalancheFujiTestnet: etherscan['avaxmain'], // fuji
-      basetest: etherscan['basemain'], // base goerli (custom)
-      bscTestnet: etherscan['bscmain'], // chapel
-      ftmTestnet: etherscan['ftmmain'], // fantom testnet
-      lineatest: etherscan['lineamain'], // linea goerli (custom)
-      polygonMumbai: etherscan['maticmain'], // mumbai
-      beratest: randomApiKey,
-      stratovm: randomApiKey,
-      bitfinity: randomApiKey,
-      apechain: etherscan['apechain'], // apechain,
-      hyperliquidtest: etherscan['hyperliquidtest'],
-    },
+    apiKey: etherscan['basemain'], // Single Etherscan API key for all chains (V2)
     customChains: [
       {
         network: 'basemain',
         chainId: 8453,
         urls: {
-          apiURL: 'https://api.basescan.org/api',
+          apiURL: 'https://api.etherscan.io/v2/api',
           browserURL: 'https://basescan.org',
         },
       },
@@ -145,8 +114,8 @@ export default {
         network: 'basetest',
         chainId: 84531,
         urls: {
-          apiURL: 'https://api-goerli.basescan.org/api',
-          browserURL: 'https://goerli.basescan.org',
+          apiURL: 'https://api.etherscan.io/v2/api',
+          browserURL: 'https://sepolia.basescan.org',
         },
       },
       {

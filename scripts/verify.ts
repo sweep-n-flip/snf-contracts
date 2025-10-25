@@ -1,4 +1,4 @@
-import { initialize, getContractAt, verifyContract } from './library';
+import { getContractAt, initialize, verifyContract } from './library';
 
 function _throw(message: string): never { throw new Error(message); }
 
@@ -62,18 +62,15 @@ async function main(args: string[]): Promise<void> {
   const BLOCKIES = '0x46bEF163D6C470a4774f9585F3500Ae3b642e751';
   console.log('BLOCKIES=' + BLOCKIES);
 
-  const ROUTER = '0x1c865C75ab96aEbe4F3beEb4388036047240096b';
-  console.log('ROUTER=' + ROUTER);
-  const router = await getContractAt('UniswapV2Router01Collection', ROUTER);
+  // Use the deployed addresses from finish-deploy.ts
+  const FACTORY = '0x611103410C8021B51725ab38Cc79C8F0feD715c6';
+  const ROUTER = '0x1312488a7BF5aAF2B2EeBE8393c9616A1418CF04';
+  const WRAPPER = '0x1bF3589f16e856aAD1459deABbb1c544E78E1c33';
+  const PAIR = '0x6b7D1B00F20aa7d85Ceb34979aB59595cFE70630';
 
-  const FACTORY = await router.factory();
   console.log('FACTORY=' + FACTORY);
-  const factory = await getContractAt('UniswapV2Factory', FACTORY);
-
-  const WRAPPER = await factory.getWrapper(BLOCKIES);
+  console.log('ROUTER=' + ROUTER);
   console.log('WRAPPER=' + WRAPPER);
-
-  const PAIR = await factory.getPair(WETH, WRAPPER);
   console.log('PAIR=' + PAIR);
 
   await verifyContract(ROUTER, 'contracts/periphery/UniswapV2Router01Collection.sol:UniswapV2Router01Collection', FACTORY, WETH, ADMIN, ADMIN, 2n * ONE_PERCENT + HALF_PERCENT);
