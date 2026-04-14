@@ -49,3 +49,7 @@ Solidity smart contracts (Uniswap V2 fork adapted for NFTs) + The Graph subgraph
 - Never deploy without verifying Delegation config matches target chain
 - All contracts are immutable (no proxy pattern)
 - Test discrete token edge cases before any rounding logic changes
+- **Contracts max ~300 lines** — split complex logic into libraries
+- **Interfaces in separate files** — `interfaces/IContract.sol`, not inline
+- **Subgraph mappings**: keep handler functions focused, extract helpers
+- **Never commit to `main`** — work on `dev`, merge to `main` only for production releases
