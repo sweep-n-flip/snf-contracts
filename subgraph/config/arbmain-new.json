@@ -1,0 +1,8 @@
+{
+  "NETWORK": "arbmain-new",
+  "network": "arbitrum-one",
+  "factoryAddress": "0x85039B2e95558aDdCCf4379728b8433C447E37bE",
+  "factoryStartBlock": "452826927",
+  "goldskySlug": "snf-arbitrum",
+  "goldskySlugNote": "Indexa o Factory NOVO da Arbitrum (deployed 2026-04-15). O snf-arbitrum-old continua disponivel para os contratos legados."
+}

@@ -1,3 +1,9 @@
+import "dotenv/config";
+// Strip unreplaced mustache placeholders (e.g., NETWORK={{NETWORK}} from the subgraph
+// template) so hardhat doesn't treat "{{NETWORK}}" as a real value.
+for (const k of Object.keys(process.env)) {
+  if (/^\{\{.*\}\}$/.test(process.env[k] || '')) delete process.env[k];
+}
 // Comment these imports for zkSync mainnet/testnet
 import "@nomicfoundation/hardhat-verify";
 import "@nomiclabs/hardhat-ethers";
@@ -18,18 +24,31 @@ const privateKey: string = process.env['PRIVATE_KEY'] || keystore[privateKeyId] 
 const network: string = process.env['NETWORK'] || 'mainnet';
 const balance: string = process.env['BALANCE'] || '1000000000000000000000';
 const infuraProjectId: string = process.env['INFURA_PROJECT_ID'] || '';
+const alchemyKey: string = process.env['ALCHEMY_KEY'] || '';
+const mainnetRpcUrl: string = alchemyKey
+  ? 'https://eth-mainnet.g.alchemy.com/v2/' + alchemyKey
+  : 'https://mainnet.infura.io/v3/' + infuraProjectId;
+const polygonRpcUrl: string = alchemyKey
+  ? 'https://polygon-mainnet.g.alchemy.com/v2/' + alchemyKey
+  : 'https://polygon-rpc.com';
+const arbitrumRpcUrl: string = alchemyKey
+  ? 'https://arb-mainnet.g.alchemy.com/v2/' + alchemyKey
+  : 'https://arb1.arbitrum.io/rpc';
+const baseRpcUrl: string = alchemyKey
+  ? 'https://base-mainnet.g.alchemy.com/v2/' + alchemyKey
+  : 'https://mainnet.base.org';
 
 const NETWORK_CONFIG: { [name: string]: [number, string] | [number, string, string, string] } = {
   // mainnets
-  'mainnet': [1, 'https://mainnet.infura.io/v3/' + infuraProjectId], // ethereum
+  'mainnet': [1, mainnetRpcUrl], // ethereum
   'avaxmain': [43114, 'https://api.avax.network/ext/bc/C/rpc'], // avalanche
-  'basemain': [8453, 'https://mainnet.base.org'], // base
+  'basemain': [8453, baseRpcUrl], // base
   'bscmain': [56, 'https://bsc-dataseed.binance.org'], // bnb smart chain
   'ftmmain': [250, 'https://rpc.ftm.tools'], // fantom
   'lineamain': [59144, 'https://rpc.linea.build'], // linea
-  'maticmain': [137, 'https://polygon-rpc.com'], // polygon
+  'maticmain': [137, polygonRpcUrl], // polygon
   'zksyncmain': [324, 'https://mainnet.era.zksync.io', 'mainnet', 'https://zksync2-mainnet-explorer.zksync.io/contract_verification'], // zksync era
-  'arbmain': [42161, 'https://arb1.arbitrum.io/rpc'], // arbitrum one
+  'arbmain': [42161, arbitrumRpcUrl], // arbitrum one
   'blastmain': [81457, 'https://rpc.blast.io/'], // blast
   'optmain': [10, 'https://mainnet.optimism.io'], // optimism
   'modemain': [34443, 'https://mainnet.mode.network'], // mode
@@ -100,7 +119,10 @@ export default {
     hardhat: { chainId, forking: { url }, accounts: [{ privateKey, balance }] },
   },
   etherscan: {
-    apiKey: etherscan['basemain'], // Single Etherscan API key for all chains (V2)
+    // Etherscan V2: single API key for all chains. Passing as a plain string (not an
+    // object of network→key) is required — object form triggers the deprecated V1
+    // endpoints. Fill any field in etherscan.json and the first non-empty value is used.
+    apiKey: (etherscan['mainnet'] || etherscan['basemain'] || Object.values(etherscan).find(v => v) || ''),
     customChains: [
       {
         network: 'basemain',

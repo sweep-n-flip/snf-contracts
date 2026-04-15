@@ -13,6 +13,9 @@ type Currency @entity {
   wrapping: Boolean!
   collection: Collection
   tokenIds: [BigInt!]!
+  # derivedETH = price of 1 unit of this currency in ETH (native).
+  # Computed from the best available WETH-paired pool; 0 when not derivable.
+  derivedETH: BigDecimal!
 }
 
 type Pair @entity {
@@ -24,28 +27,44 @@ type Pair @entity {
   reserve0: BigDecimal!
   reserve1: BigDecimal!
   totalSupply: BigDecimal!
+  # Aggregates (computed by mappings):
+  reserveETH:  BigDecimal!
+  reserveUSD:  BigDecimal!
+  volumeToken0: BigDecimal!
+  volumeToken1: BigDecimal!
+  volumeUSD:   BigDecimal!
+  txCount:     BigInt!
+  isNFTPool:   Boolean!
+  createdAtTimestamp:   BigInt!
+  createdAtBlockNumber: BigInt!
 }
 
-type PairDay @entity(immutable: true) {
+type PairDay @entity {
   id: ID!
   pair: Pair!
   day: Int!
   volume0: BigDecimal!
   volume1: BigDecimal!
+  volumeUSD: BigDecimal!
   reserve0: BigDecimal!
   reserve1: BigDecimal!
+  reserveUSD: BigDecimal!
   totalSupply: BigDecimal!
+  txCount: BigInt!
 }
 
-type PairMonth @entity(immutable: true) {
+type PairMonth @entity {
   id: ID!
   pair: Pair!
   month: Int!
   volume0: BigDecimal!
   volume1: BigDecimal!
+  volumeUSD: BigDecimal!
   reserve0: BigDecimal!
   reserve1: BigDecimal!
+  reserveUSD: BigDecimal!
   totalSupply: BigDecimal!
+  txCount: BigInt!
 }
 
 type Swap @entity(immutable: true) {
@@ -56,7 +75,15 @@ type Swap @entity(immutable: true) {
   type: String!
   volume0: BigDecimal!
   volume1: BigDecimal!
+  volumeUSD: BigDecimal!
   timestamp: Int!
+}
+
+# Singleton (id: "1") holding the derived ETH→USD price.
+# Updated every time a stablecoin/WETH pool's Sync fires.
+type Bundle @entity {
+  id: ID!
+  ethPrice: BigDecimal!
 }
 
 type Counter @entity {

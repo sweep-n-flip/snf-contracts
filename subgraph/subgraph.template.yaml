@@ -22,6 +22,9 @@ dataSources:
         - Pair
         - PairDay
         - PairMonth
+        - Swap
+        - Bundle
+        - Counter
       abis:
         - name: IUniswapV2Factory
           file: ./abis/IUniswapV2Factory.json
@@ -55,6 +58,9 @@ templates:
         - Pair
         - PairDay
         - PairMonth
+        - Swap
+        - Bundle
+        - Counter
       abis:
         - name: IUniswapV2Factory
           file: ./abis/IUniswapV2Factory.json
@@ -87,6 +93,9 @@ templates:
         - Pair
         - PairDay
         - PairMonth
+        - Swap
+        - Bundle
+        - Counter
       abis:
         - name: IUniswapV2Factory
           file: ./abis/IUniswapV2Factory.json

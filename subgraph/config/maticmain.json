@@ -2,5 +2,7 @@
   "NETWORK": "maticmain",
   "network": "matic",
   "factoryAddress": "0x16eD649675e6Ed9F1480091123409B4b8D228dC1",
-  "factoryStartBlock": "43981810"
+  "factoryStartBlock": "43981810",
+  "goldskySlug": "snf-polygon-old",
+  "goldskySlugNote": "Exception — this subgraph tracks the LEGACY Polygon contracts (old WERC721/Factory). Slug uses the -old suffix because a future redeploy with current contracts will take over the snf-polygon name."
 }

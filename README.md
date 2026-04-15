@@ -10,17 +10,39 @@ Ethereum:
 
 | Contract     | Network (ID)      | Address                                                                                                                         |
 | ------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| ROUTER       | mainnet (1)       | [0xDc0088a282d225f8cb08D092950Dde6eBAa36E78](https://etherscan.io/address/0xDc0088a282d225f8cb08D092950Dde6eBAa36E78)           |
+| FACTORY      | mainnet (1)       | [0x85039B2e95558aDdCCf4379728b8433C447E37bE](https://etherscan.io/address/0x85039B2e95558aDdCCf4379728b8433C447E37bE)           |
+
+| Subgraph                        | Target  | Network (ID)      | Endpoint                                                                                                                                           |
+| ------------------------------- | ------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ALL](/subgraph/schema.graphql) | Goldsky | mainnet (1)       | [`snf-mainnet/1.0.0`](https://api.goldsky.com/api/public/project_cmngb5qq6d79v01wba5bi7hdg/subgraphs/snf-mainnet/1.0.0/gn) — deployment `QmU4PoBj6vQ2Mg3Wqcj4JDvKszBZxy12uTjxekigTUKmQo` |
+
+Ethereum (old - criptorastas):
+
+| Contract     | Network (ID)      | Address                                                                                                                         |
+| ------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | ROUTER       | mainnet (1)       | [0x151522484121f4e28eA24c8b5d827132775a93FE](https://etherscan.io/address/0x151522484121f4e28eA24c8b5d827132775a93FE)           |
 | FACTORY      | mainnet (1)       | [0x16eD649675e6Ed9F1480091123409B4b8D228dC1](https://etherscan.io/address/0x16eD649675e6Ed9F1480091123409B4b8D228dC1)           |
 | ROUTER       | goerli (5)        | [0x151522484121f4e28eA24c8b5d827132775a93FE](https://goerli.etherscan.io/address/0x151522484121f4e28eA24c8b5d827132775a93FE)    |
 | FACTORY      | goerli (5)        | [0x16eD649675e6Ed9F1480091123409B4b8D228dC1](https://goerli.etherscan.io/address/0x16eD649675e6Ed9F1480091123409B4b8D228dC1)    |
 
-| Subgraph                        | Target | Network (ID)      | Endpoint                                                                                                                                 |
-| ------------------------------- | ------ | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| [ALL](/subgraph/schema.graphql) | Studio | mainnet (1)       | [`QmQbhbTU9YCeajmXZa84pNGv5HC1HesVmPHGaNLMfPdA2C`](https://api.thegraph.com/subgraphs/id/QmQbhbTU9YCeajmXZa84pNGv5HC1HesVmPHGaNLMfPdA2C) |
-| [ALL](/subgraph/schema.graphql) | Studio | goerli (5)        | [`QmatGwDRMMwbvSVWUNWkekoEqAypqjHctsJ7SrtkFtgiJb`](https://api.thegraph.com/subgraphs/id/QmatGwDRMMwbvSVWUNWkekoEqAypqjHctsJ7SrtkFtgiJb) |
+| Subgraph                        | Target  | Network (ID)      | Endpoint                                                                                                                                                 |
+| ------------------------------- | ------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ALL](/subgraph/schema.graphql) | Goldsky | mainnet (1)       | [`snf-mainnet-old/1.0.0`](https://api.goldsky.com/api/public/project_cmnyu0s049bde01vr754rehxg/subgraphs/snf-mainnet-old/1.0.0/gn) — conta snf-2, schema v2 |
 
 Polygon Matic:
+
+| Contract     | Network (ID)      | Address                                                                                                                         |
+| ------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| ROUTER       | maticmain (137)   | [0xDc0088a282d225f8cb08D092950Dde6eBAa36E78](https://polygonscan.com/address/0xDc0088a282d225f8cb08D092950Dde6eBAa36E78)         |
+| FACTORY      | maticmain (137)   | [0x85039B2e95558aDdCCf4379728b8433C447E37bE](https://polygonscan.com/address/0x85039B2e95558aDdCCf4379728b8433C447E37bE)         |
+
+| Subgraph                        | Target  | Network (ID)      | Endpoint                                                                                                                                                                            |
+| ------------------------------- | ------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ALL](/subgraph/schema.graphql) | Goldsky | maticmain (137)   | [`snf-polygon/1.0.0`](https://api.goldsky.com/api/public/project_cmo0byz6wpdci01vt2k7p3l2q/subgraphs/snf-polygon/1.0.0/gn) — conta snf-3, schema v2                                  |
+| [LEGACY]                        | Goldsky | maticmain (137)   | [`snf-polygon-old/1.0.0`](https://api.goldsky.com/api/public/project_cmnyu0s049bde01vr754rehxg/subgraphs/snf-polygon-old/1.0.0/gn) — conta snf-2, indexa contratos antigos           |
+
+Polygon Matic (old):
 
 | Contract     | Network (ID)      | Address                                                                                                                         |
 | ------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -29,21 +51,24 @@ Polygon Matic:
 | ROUTER       | matictest (80001) | [0x151522484121f4e28eA24c8b5d827132775a93FE](https://mumbai.polygonscan.com/address/0x151522484121f4e28eA24c8b5d827132775a93FE) |
 | FACTORY      | matictest (80001) | [0x16eD649675e6Ed9F1480091123409B4b8D228dC1](https://mumbai.polygonscan.com/address/0x16eD649675e6Ed9F1480091123409B4b8D228dC1) |
 
-| Subgraph                        | Target | Network (ID)      | Endpoint                                                                                                                                 |
-| ------------------------------- | ------ | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| [ALL](/subgraph/schema.graphql) | Hosted | maticmain (137)   | [`QmbJnH4cLPuX5HftccJQdQ7QY9ehuT5tAd6BJKDZBCHCKh`](https://api.thegraph.com/subgraphs/id/QmbJnH4cLPuX5HftccJQdQ7QY9ehuT5tAd6BJKDZBCHCKh) |
-| [ALL](/subgraph/schema.graphql) | Hosted | matictest (80001) | [`QmPxgnkr5L5yN1NTtqfQojSsjEXiY2UXKHV1GhfKpEQR48`](https://api.thegraph.com/subgraphs/id/QmPxgnkr5L5yN1NTtqfQojSsjEXiY2UXKHV1GhfKpEQR48) |
-
 Arbitrum One:
+
+| Contract     | Network (ID)      | Address                                                                                                                         |
+| ------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| ROUTER       | arbmain (42161)   | [0xDc0088a282d225f8cb08D092950Dde6eBAa36E78](https://arbiscan.io/address/0xDc0088a282d225f8cb08D092950Dde6eBAa36E78)            |
+| FACTORY      | arbmain (42161)   | [0x85039B2e95558aDdCCf4379728b8433C447E37bE](https://arbiscan.io/address/0x85039B2e95558aDdCCf4379728b8433C447E37bE)            |
+
+| Subgraph                        | Target  | Network (ID)      | Endpoint                                                                                                                                                                       |
+| ------------------------------- | ------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [ALL](/subgraph/schema.graphql) | Goldsky | arbmain (42161)   | [`snf-arbitrum/1.0.0`](https://api.goldsky.com/api/public/project_cmo0byz6wpdci01vt2k7p3l2q/subgraphs/snf-arbitrum/1.0.0/gn) — conta snf-3, schema v2                            |
+| [LEGACY]                        | Goldsky | arbmain (42161)   | [`snf-arbitrum-old/1.0.0`](https://api.goldsky.com/api/public/project_cmngb5qq6d79v01wba5bi7hdg/subgraphs/snf-arbitrum-old/1.0.0/gn) — conta snf-1, indexa contratos legados    |
+
+Arbitrum One (old):
 
 | Contract     | Network (ID)      | Address                                                                                                                         |
 | ------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | ROUTER       | arbmain (42161)   | [0x46ed13B4EdDa147fA7eF018FB178300FA24C4Efc](https://arbiscan.io/address/0x46ed13B4EdDa147fA7eF018FB178300FA24C4Efc)            |
 | FACTORY      | arbmain (42161)   | [0xFc42221594c07F2EFCEDfb11f4763FCa03248B5A](https://arbiscan.io/address/0xFc42221594c07F2EFCEDfb11f4763FCa03248B5A)            |
-
-| Subgraph                        | Target | Network (ID)      | Endpoint                                                                                                                                 |
-| ------------------------------- | ------ | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| [ALL](/subgraph/schema.graphql) | Studio | arbmain (42161)   | [`QmRmo1WokR6DawFYsM4CGASPGKzseBUuxEpaTMLHtQ5RqY`](https://api.thegraph.com/subgraphs/id/QmRmo1WokR6DawFYsM4CGASPGKzseBUuxEpaTMLHtQ5RqY) |
 
 Avalanche:
 
@@ -66,9 +91,10 @@ Base:
 | ROUTER       | basemain (8453)   | [0x1312488a7BF5aAF2B2EeBE8393c9616A1418CF04](https://basescan.org/address/0x1312488a7BF5aAF2B2EeBE8393c9616A1418CF04)         |
 | FACTORY      | basemain (8453)   | [0x611103410C8021B51725ab38Cc79C8F0feD715c6](https://basescan.org/address/0x611103410C8021B51725ab38Cc79C8F0feD715c6)         |
 
-| Subgraph                        | Target | Network (ID)      | Endpoint                                                                                                                                 |
-| ------------------------------- | ------ | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| [ALL](/subgraph/schema.graphql) | Studio | basemain (8453)   | [`QmQ28JfS4jqSdqijeXZarQjnjc6rhpXrNrrz6UMah3NAnk`](https://api.thegraph.com/subgraphs/id/QmQ28JfS4jqSdqijeXZarQjnjc6rhpXrNrrz6UMah3NAnk) |
+| Subgraph                        | Target  | Network (ID)      | Endpoint                                                                                                                                           |
+| ------------------------------- | ------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ALL](/subgraph/schema.graphql) | Goldsky | basemain (8453)   | [`snf-base/1.0.0`](https://api.goldsky.com/api/public/project_cmngb5qq6d79v01wba5bi7hdg/subgraphs/snf-base/1.0.0/gn)                             |
+| [LEGACY]                        | Goldsky | basemain (8453)   | [`snf-base-old/1.0.0`](https://api.goldsky.com/api/public/project_cmnyu0s049bde01vr754rehxg/subgraphs/snf-base-old/1.0.0/gn) — conta snf-2, clonado do Studio (schema v1) |
 
 BNB Smart Chain:
 

@@ -1,0 +1,8 @@
+{
+  "NETWORK": "basemain-old",
+  "network": "base",
+  "factoryAddress": "0xFc42221594c07F2EFCEDfb11f4763FCa03248B5A",
+  "factoryStartBlock": "3537492",
+  "goldskySlug": "snf-base-old",
+  "goldskySlugNote": "Indexa o Factory legado da Base (mesmo address compartilhado com Arbitrum/Avalanche/Linea nos deploys antigos). Substituído pelo novo deploy em snf-base."
+}

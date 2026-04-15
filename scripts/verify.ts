@@ -1,10 +1,11 @@
 import { getContractAt, initialize, verifyContract } from './library';
+import { loadDeployment } from './deployments-io';
 
 function _throw(message: string): never { throw new Error(message); }
 
 const NETWORK_CONFIG: { [chainId: number]: [string, string, string] } = {
   // mainnets
-  1: ['0xc718E5a5b06ce7FEd722B128C0C0Eb9c5c902D92', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F'], // ethereum
+  1: ['0x789688F2a5AF4168A8Ddb90331b35c3130FAE892', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F'], // ethereum
   43114: ['0x4748d173d1A8becFB9afC0aB2262EcDDf6822294', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506'], // avalanche
   8453: ['0xc00d62Ce5C1543D939EEbb9d6dB213EF873300E3', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0x6BDED42c6DA8FBf0d2bA55B2fa120C5e0c8D7891'], // base
   56: ['0x4e9cA8ca6A113FC3Db72677aa04C8DE028618377', '0x3112eb8e651611Fdb8C9a5b9f80222b090e36601', '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506'], // bnb smart chain
@@ -62,11 +63,22 @@ async function main(args: string[]): Promise<void> {
   const BLOCKIES = '0x46bEF163D6C470a4774f9585F3500Ae3b642e751';
   console.log('BLOCKIES=' + BLOCKIES);
 
-  // Use the deployed addresses from finish-deploy.ts
-  const FACTORY = '0x611103410C8021B51725ab38Cc79C8F0feD715c6';
-  const ROUTER = '0x1312488a7BF5aAF2B2EeBE8393c9616A1418CF04';
-  const WRAPPER = '0x1bF3589f16e856aAD1459deABbb1c544E78E1c33';
-  const PAIR = '0x6b7D1B00F20aa7d85Ceb34979aB59595cFE70630';
+  // Resolution order for each address:
+  //   1. Env var (e.g., FACTORY=...) — explicit override
+  //   2. deployments/<chainId>.json — written by deploy.ts after each successful step
+  // If neither is set the script aborts: verifying Base addresses on another chain
+  // would waste Etherscan API quota and confuse reporting.
+  const record = loadDeployment(chainId);
+  const need = (name: string, envVal: string | undefined, fileVal: string | undefined): string => {
+    const v = envVal || fileVal;
+    if (!v) _throw(`Missing ${name}. Set env ${name}=... or populate deployments/${chainId}.json.`);
+    return v;
+  };
+  const FACTORY = need('FACTORY', process.env['FACTORY'], record.factory);
+  const ROUTER  = need('ROUTER',  process.env['ROUTER'],  record.router);
+  const WRAPPER = need('WRAPPER', process.env['WRAPPER'], record.wrapper);
+  const PAIR    = need('PAIR',    process.env['PAIR'],    record.pair);
+  const FACTORY_FROM = process.env['FACTORY_FROM'] || record.factoryFrom || FROM;
 
   console.log('FACTORY=' + FACTORY);
   console.log('ROUTER=' + ROUTER);
@@ -74,7 +86,7 @@ async function main(args: string[]): Promise<void> {
   console.log('PAIR=' + PAIR);
 
   await verifyContract(ROUTER, 'contracts/periphery/UniswapV2Router01Collection.sol:UniswapV2Router01Collection', FACTORY, WETH, ADMIN, ADMIN, 2n * ONE_PERCENT + HALF_PERCENT);
-  await verifyContract(FACTORY, 'contracts/core/UniswapV2Factory.sol:UniswapV2Factory', ADMIN, FROM);
+  await verifyContract(FACTORY, 'contracts/core/UniswapV2Factory.sol:UniswapV2Factory', ADMIN, FACTORY_FROM);
   await verifyContract(PAIR, 'contracts/core/UniswapV2Pair.sol:UniswapV2Pair');
   await verifyContract(WRAPPER, 'contracts/core/WERC721.sol:WERC721');
 

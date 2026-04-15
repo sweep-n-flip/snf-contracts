@@ -65,9 +65,25 @@ export async function deployContract(name: string, ...args: unknown[]): Promise<
     return contract.address;
   }
   const factory = await hardhat.ethers.getContractFactory(name);
-  const contract = await factory.deploy(...args);
-  await contract.deployed();
-  return contract.address;
+  try {
+    const contract = await factory.deploy(...args);
+    await contract.deployed();
+    return contract.address;
+  } catch (e: any) {
+    // Workaround: ethers v5 Formatter chokes on `to: null` for contract-creation tx
+    // responses from some RPCs (e.g. Alchemy). Recover via the receipt, which already
+    // contains `contractAddress`. Use waitForTransaction to handle propagation delay.
+    const txHash: string | undefined = e?.transactionHash;
+    if (e?.code === 'INVALID_ARGUMENT' && e?.argument === 'address' && txHash) {
+      console.log('(ethers formatter bug on tx ' + txHash + ' — recovering via receipt...)');
+      const receipt = await hardhat.ethers.provider.waitForTransaction(txHash, 1, 120_000);
+      if (receipt?.contractAddress) {
+        console.log('(recovered, contract at ' + receipt.contractAddress + ')');
+        return receipt.contractAddress;
+      }
+    }
+    throw e;
+  }
 }
 
 export async function verifyContract(address: string, contract: string, ...constructorArguments: unknown[]): Promise<boolean> {

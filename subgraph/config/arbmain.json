@@ -2,5 +2,7 @@
   "NETWORK": "arbmain",
   "network": "arbitrum-one",
   "factoryAddress": "0xFc42221594c07F2EFCEDfb11f4763FCa03248B5A",
-  "factoryStartBlock": "147862587"
+  "factoryStartBlock": "147862587",
+  "goldskySlug": "snf-arbitrum-old",
+  "goldskySlugNote": "Exception — this subgraph tracks the LEGACY Arbitrum contracts (old WERC721/Factory). Slug uses the -old suffix instead of the default snf-arbmain because a future redeploy with current contracts will take over the snf-arbitrum name."
 }
